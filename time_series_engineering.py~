@@ -181,6 +181,8 @@ plt.close()
 #the overall correlation is never as strong as high DNI.  Most likely, this is because DHI is heavily influenced
 #by cloud cover, and even moving clouds, meaning that it's going to be much more variable in general.
 
+andrews_curves(tmy_ts_df, 'DNI')
+plt.show()
 #plt.show()
 
 

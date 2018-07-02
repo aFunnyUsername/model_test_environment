@@ -49,21 +49,7 @@ def standardizer(X, Y):
 	Y_scaled = Y_standardizer.transform(Y)
 	return X_scaled, Y_scaled.ravel(), X_standardizer, Y_standardizer
 
-#==================================================================================================
-#============Plotter Functions=====================================================================
-#==================================================================================================
-#NOTE, these should save each plot to a plot folder
-def line_plotter()
 
-def hist_plotter()
-
-def box_plotter()
-
-def heat_map_plotter()
-
-def scatter_plotter()
-
-def autocorrelation_plotter()
 
 
 
