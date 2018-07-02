@@ -1,6 +1,7 @@
 #following the realisation that I'm working with a time series problem, it's time to start bringing data in 
 #with that in mind
 import pandas as pd
+from pandas.plotting import lag_plot
 from matplotlib import pyplot as plt
 #NOTE here is the time scrubbing.  TMY for some reason saves there time in hours 1-24 instead of 0-23 like 
 #normal people so we have to fix it.
@@ -136,6 +137,23 @@ plt.xlabel('Diffuse Horizontal Irradiance (W/m^2)')
 plt.ylabel('Percentage of Distribution')
 plt.savefig('plots\\dhivstime_dens_07012018.png')
 plt.close()
+
+#checkin out a lag plot for both our DNI and DHI
+
+lag_plot(dni_ser, size=1)
+plt.savefig('plots\\dni_lagplot_t1_07012018.png')
+plt.close()
+lag_plot(dhi_ser, size=1)
+plt.savefig('plots\\dhi_lagplot_t1_07012018.png')
+plt.close()
+#NOTE, this is really interesting, as it shows that DNI's correlation with previous observations gets better
+#as DNI gets larger.  This makes sense, since a DNI of 700 or more means we're probably in the middle of the 
+#day, so the next time is much more likely to have a high DNI as well.  In the morning and evening however, 
+#there can be a high or low DNI, followed by zero (or led, in the morning) which makes the correlation weaker
+#for those mid to low level numbers.  
+#NOTE, dhi seems to go the other direction, but the correlation doesn't get as weak at the high DHI.  However, 
+#the overall correlation is never as strong as high DNI.  Most likely, this is because DHI is heavily influenced
+#by cloud cover, and even moving clouds, meaning that it's going to be much more variable in general.
 
 
 
